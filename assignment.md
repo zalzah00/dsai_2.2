@@ -24,7 +24,15 @@ r = redis.Redis(
 Answer:
 
 ```python
-
+r.hset(
+    'john doe',
+    mapping={
+        "name": "John Doe",
+        "age": 35,
+        "email": "john@email.com",
+    },
+)
+r.hgetall("john doe")
 ```
 
 ### Question 2
@@ -41,7 +49,9 @@ bucket = client.get_bucket("gcp-public-data-landsat")
 Answer:
 
 ```python
-
+blobs = bucket.list_blobs(max_results=10)
+for blob in blobs:
+    print(f"Name: {blob.name}, Size: {blob.size} bytes")
 ```
 
 ## Submission
